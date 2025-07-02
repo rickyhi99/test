@@ -13,7 +13,7 @@
           :key="hobby.id"
           class="recommendation-card"
           :class="{ 'active': index === activeIndex }"
-          :ref="el => cardRefs[index] = el"
+          :ref="(el: any) => setCardRef(el, index)"
         >
           <div class="card-image">
             <img :src="hobby.image" :alt="hobby.name" />
@@ -51,7 +51,7 @@ const emit = defineEmits<{
 }>();
 
 const scrollContainer = ref<HTMLElement>();
-const cardRefs = ref<(HTMLElement | null)[]>([]);
+const cardRefs = ref<HTMLElement[]>([]);
 const activeIndex = ref(0);
 
 const closeModal = () => {
@@ -62,6 +62,11 @@ const selectHobby = (hobby: Hobby) => {
   emit('selectHobby', hobby);
 };
 
+const setCardRef = (el: any, index: number) => {
+  if (el) {
+    cardRefs.value[index] = el;
+  }
+};
 
 const updateActiveCard = () => {
   if (!scrollContainer.value) return;

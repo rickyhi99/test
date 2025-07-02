@@ -9,7 +9,7 @@
 
     <div class="tab-navigation">
       <button 
-        v-for="tab in tabs" 
+        v-for="tab in tabs"
         :key="tab.id"
         @click="activeTab = tab.id"
         class="tab-button"
@@ -21,18 +21,18 @@
 
     <div class="tab-content">
       <HobbyInfo 
-        v-if="activeTab === 'info'" 
-        :hobby="hobby" 
+        v-if="activeTab === 'info'"
+        :hobby="hobby"
       />
       
       <HobbyMaterials 
-        v-if="activeTab === 'materials'" 
-        :hobby="hobby" 
+        v-if="activeTab === 'materials'"
+        :hobby="hobby"
       />
       
       <HobbyAdditionalInfo 
-        v-if="activeTab === 'additional'" 
-        :hobby="hobby" 
+        v-if="activeTab === 'additional'"
+        :hobby="hobby"
       />
     </div>
   </div>
@@ -45,7 +45,8 @@ import HobbyInfo from './HobbyInfo.vue';
 import HobbyMaterials from './HobbyMaterials.vue';
 import HobbyAdditionalInfo from './HobbyAdditionalInfo.vue';
 
-const props = defineProps<{
+// props 정의 - 하지만 변수로 할당하지 않음
+defineProps<{
   hobby: Hobby;
 }>();
 
@@ -142,11 +143,11 @@ const goBack = () => {
   .detail-header {
     padding: 1.5rem 1rem;
   }
-
+  
   .detail-header h1 {
     font-size: 1.5rem;
   }
-
+  
   .back-button {
     top: 1rem;
     left: 0.5rem;
